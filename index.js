@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 
 const { config } = require('./config/index');
 const moviesApi = require('./routes/movies')
+const userMoviesApi = require('./routes/userMovies')
 
 const { logErrors, errorHandler, wrapErrors } = require('./utils/middleware/errorHandlers')
 
@@ -29,6 +30,7 @@ app.use((request, response, next) =>{
 })
 
 moviesApi(app)
+userMoviesApi(app)
 
 // Catch 404
 app.use(notFoundHanlder)
