@@ -6,11 +6,11 @@ const bodyParser = require('body-parser')
 const { config } = require('./config/index');
 const moviesApi = require('./routes/movies')
 const userMoviesApi = require('./routes/userMovies')
+const authApi = require('./routes/auth');
 
 const { logErrors, errorHandler, wrapErrors } = require('./utils/middleware/errorHandlers')
 
-const notFoundHanlder = require('./utils/middleware/notFoundHandler')
-
+const notFoundHanlder = require('./utils/middleware/notFoundHandler');
 
 //morgan
 app.use(morgan('dev'))
@@ -31,6 +31,7 @@ app.use((request, response, next) =>{
 
 moviesApi(app)
 userMoviesApi(app)
+authApi(app)
 
 // Catch 404
 app.use(notFoundHanlder)
