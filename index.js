@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet')
 const app = express();
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
@@ -28,6 +29,8 @@ app.use((request, response, next) =>{
     }
     next()
 })
+
+app.use(helmet())
 
 moviesApi(app)
 userMoviesApi(app)
